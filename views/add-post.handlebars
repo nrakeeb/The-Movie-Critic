@@ -1,0 +1,76 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cupid</title>
+    <link rel="stylesheet" href="/stylesheets/comment.css">
+</head>
+
+<a href="/dashboard" class="go-back"> &larr; Back to dashboard</a>
+
+<article class="new-page">
+    <section class="new-form-page">
+        <div class="form-heading">
+            <h2>Create New Blog Post</h2>
+        </div>
+        {{!-- search bar --}}
+        <div class = "wrapper">
+        <!-- logo -->
+        <div class = "logo">
+            <div class = "container">
+            </div>
+        </div>
+        <!-- end of logo -->
+          <!-- search container -->
+        <div class = "search-container">
+            <div class = "search-element">
+                <h3>Search Movie:</h3>
+                <input type = "text" class = "form-control" placeholder="Search Movie Title ..." id = "movie-search-box" onkeyup="findMovies()" onclick = "findMovies()" onfocusout = "clearList()">
+
+                <div class = "search-list" id = "search-list">
+                    <!-- list here -->
+                     <div class = "search-list-item">
+                        <div class = "search-item-thumbnail">
+                            <img src = "/image/guardians.jpg">
+                        </div>
+                        <div class = "search-item-info">
+                            <h3>Guardians of the Galaxy Vol. 2</h3>
+                            <p>2017</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- end of search container -->
+
+<!-- result container -->
+        <div class = "container">
+            <div class = "result-container">
+                <div class = "result-grid" id = "result-grid">
+                    <!-- movie information here -->
+                     
+                </div>
+            </div>
+        </div>
+        <!-- end of result container -->
+    </div>
+
+        {{!-- search list --}}
+        <div class = "search-list" id = "search-list"></div>
+        <div class="form-section">
+            <form class="new-post-form">
+                <div class="post-title-section">
+                    <label for="post-title">ranking</label>
+                    <input type="text" id="post-title" name="post-title" />
+                </div>
+                <div class="post-content">
+                    <label for="post-content">Content</label>
+                    <textarea class="entry-field" id="post-content" name="post-content"></textarea>
+                </div>
+                <button type="submit" class="btn">Create</button>
+            </form>
+        </div>
+    </section>
+</article>
+
+<script src="/javascript/add-post.js"></script>
+<script src="/javascript/search-movie.js"></script>
