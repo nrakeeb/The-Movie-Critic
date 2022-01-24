@@ -2,8 +2,7 @@ const router = require('express').Router();
 const {
     User,
     Post,
-    Comment,
-    movie
+    Movie
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
@@ -11,7 +10,7 @@ const withAuth = require('../../utils/auth');
 // Get all posts
 router.get("/", (req, res) => {
     Post.findAll({
-            attributes: ["id", "content", "title", "created_at"],
+            attributes: ["id", "content", "ranking", "created_at"],
             order: [
                 ["created_at", "DESC"]
             ],
@@ -20,8 +19,8 @@ router.get("/", (req, res) => {
                     attributes: ["username"],
                 },
                 {
-                    model: movie,
-                    attributes: ["id", "title", "image_url"],
+                    model: Movie,
+                    attributes: ["movie_id", "title", "image_url", "overview"],
                     include: {
                         model: User,
                         attributes: ["username"],
@@ -42,13 +41,13 @@ router.get("/:id", (req, res) => {
             where: {
                 id: req.params.id,
             },
-            attributes: ["id", "content", "title", "created_at"],
+            attributes: ["id", "content", "ranking", "created_at"],
             include: [{
                     model: User,
                     attributes: ["username"],
                 },
                 {
-                    model: Comment,
+                    model: Movie,
                     attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
                     include: {
                         model: User,
