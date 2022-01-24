@@ -1,6 +1,6 @@
 const User = require('./User');
 const Post = require('./Post');
-const Movie = require('./movie')
+const Movie = require('./Movie')
 
 User.hasMany(Post, {
     foreignKey: 'user_id'
@@ -11,11 +11,11 @@ Post.belongsTo(User, {
 })
 
 Movie.hasMany(Post, {
-
+    foreignKey: "movie_id"
 })
 
 Post.belongsTo(Movie, {
-
+    foreignKey: "movie_id"
 })
 
 
