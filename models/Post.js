@@ -16,10 +16,9 @@ Post.init({
     },
     ranking: {
         type: DataTypes.STRING,
-        // validate: {
-        //     min: 1,
-        //     max: 5
-        // }
+        validate: {
+            len: [1,5]
+        }
     },
     content: {
         type: DataTypes.STRING,
