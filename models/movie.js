@@ -2,21 +2,16 @@ const { Model, DataTypes } = require('sequelize');
  
 const sequelize = require('../config/connection.js');
 
-class movie extends Model {
+class Movie extends Model {
 
 }
 
-movie.init({
+Movie.init({
     movie_id:
     {   type: DataTypes.INTEGER,
         allowNull: false,
         primaryKey: true,
         autoIncrement: true
-    },
-    imdb_id: {
-        type: DataTypes.INTEGER,
-        allowNull: false,
-       
     },
    
     title: {
@@ -54,4 +49,4 @@ movie.init({
     modelName: 'movie'
 })
 
-module.exports = movie;
+module.exports = Movie;
