@@ -2,14 +2,14 @@ const router = require('express').Router();
 const {
     User,
     Post,
-    movie
+    Movie
 } = require('../../models');
 const withAuth = require('../../utils/auth');
 
 
 //Get all comments
 router.get("/", (req, res) => {
-    Comment.findAll()
+    Movie.findAll()
         .then((dbCommentData) => res.json(dbCommentData))
         .catch((err) => {
             console.log(err);
