@@ -2,18 +2,9 @@ const { Model, DataTypes } = require('sequelize');
  
 const sequelize = require('../config/connection.js');
 
-class Movie extends Model {
-
-}
+class Movie extends Model {}
 
 Movie.init({
-    movie_id:
-    {   type: DataTypes.INTEGER,
-        allowNull: false,
-        primaryKey: true,
-        autoIncrement: true
-    },
-   
     title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -21,7 +12,7 @@ Movie.init({
          len: [5]
         }
     },
-    image_url: {
+    poster_path: {
         type: DataTypes.STRING
 
     },
@@ -31,17 +22,15 @@ Movie.init({
         allowNull: false,
     },
 
-    language: {
+    original_language: {
         type:DataTypes.STRING,
-        allowNull:false
-
-
+        allowNull:true
     },
-    overview:{
-        type: DataTypes.STRING,
-        allowNull: false,
 
-    }
+    // overview:{
+    //     type: DataTypes.STRING,
+    //     allowNull: false,
+    // },
 },{
     sequelize,
     freezeTableName: true,
