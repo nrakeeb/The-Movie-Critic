@@ -20,7 +20,7 @@ router.get("/", (req, res) => {
                 },
                 {
                     model: Movie,
-                    attributes: ["movie_id", "title", "image_url", "overview"],
+                    attributes: ['title', 'poster_path', 'release_date', 'original_language','created_at'],
                     include: {
                         model: User,
                         attributes: ["username"],
@@ -48,7 +48,7 @@ router.get("/:id", (req, res) => {
                 },
                 {
                     model: Movie,
-                    attributes: ["id", "comment_text", "post_id", "user_id", "created_at"],
+                    attributes: ['title', 'poster_path', 'release_date', 'original_language','created_at'],
                     include: {
                         model: User,
                         attributes: ["username"],
@@ -75,7 +75,7 @@ router.get("/:id", (req, res) => {
 router.post("/", withAuth, (req, res) => {
     console.log("creating");
     Post.create({
-            title: req.body.title,
+            ranking: req.body.ranking,
             content: req.body.post_content,
             user_id: req.session.user_id
         })
@@ -84,12 +84,13 @@ router.post("/", withAuth, (req, res) => {
             console.log(err);
             res.status(500).json(err);
         });
+
 });
 
 // Update a post
 router.put("/:id", withAuth, (req, res) => {
     Post.update({
-            title: req.body.title,
+            ranking: req.body.ranking,
             content: req.body.post_content,
         }, {
             where: {

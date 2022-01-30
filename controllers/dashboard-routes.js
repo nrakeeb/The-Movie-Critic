@@ -3,7 +3,7 @@ const sequelize = require('../config/connection');
 const {
     Post,
     User,
-    Comment
+    Movie,
 } = require('../models');
 const withAuth = require('../utils/auth');
 
@@ -15,13 +15,13 @@ router.get('/', withAuth, (req, res) => {
             },
             attributes: [
                 'id',
-                'title',
+                'ranking',
                 'content',
                 'created_at'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    model: Movie,
+                    attributes: ['title', 'image_url', 'release_date', 'language', 'overview', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -37,6 +37,7 @@ router.get('/', withAuth, (req, res) => {
             const posts = dbPostData.map(post => post.get({
                 plain: true
             }));
+            console.log(posts)
             res.render('dashboard', {
                 posts,
                 loggedIn: true
@@ -55,13 +56,13 @@ router.get('/edit/:id', withAuth, (req, res) => {
             },
             attributes: [
                 'id',
-                'title',
+                'ranking',
                 'content',
                 'created_at'
             ],
             include: [{
-                    model: Comment,
-                    attributes: ['id', 'comment_text', 'post_id', 'user_id', 'created_at'],
+                    model: Movie,
+                    attributes: [ 'title', 'image_url', 'release_date', 'language', 'overview', 'created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
