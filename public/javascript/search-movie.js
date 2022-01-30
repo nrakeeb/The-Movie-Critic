@@ -1,16 +1,17 @@
 // const { response } = require("express");
 // const res = require("express/lib/response");
 
-var movieSearchBox = document.getElementById('movie-search-box');
+const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
 const IMAGE_URL = `https://image.tmdb.org/t/p/w500`
 const url = `https://api.themoviedb.org/3/search/movie/`;
 const apiKey = "f4ba895ea5be84ce3be947bc2a778568"
+// let movies=[];
 
 async function clearList(){
-    await delay(5) // delays the clear for 10ms
+    await delay(100) // delays the clear for 10ms
     searchList.innerHTML="";
 }
 
@@ -22,18 +23,18 @@ function delay(time) {
 
 async function loadMovies(searchTerm) {
 
-    var searchURL = `${url}?api_key=${apiKey}&query=${searchTerm}`;
+    let searchURL = `${url}?api_key=${apiKey}&query=${searchTerm}`;
  //console.log(url)
-    var response = await fetch(searchURL);
+    let response = await fetch(searchURL);
     //console.log(response)
-    var data = response.json();
+    let data = response.json();
     //console.log(data);
 
-    (async () => {
-        if(await data){          
+    await (async () => {
+        if (await data) {
             displayMovieList(await data);
         }
-      })()
+    })()
 
 
    // if(data) {
@@ -50,33 +51,30 @@ function findMovies(){
     let searchTerm = (movieSearchBox.value).trim();
     if(searchTerm.length > 0){
         searchList.classList.remove('hide-search-list');
-        loadMovies(searchTerm);
+        loadMovies(searchTerm).then();
     } else {
         searchList.classList.add('hide-search-list');
     }
 }
 
 function displayMovieList(jsonData){
-    const movies = jsonData.results
-    // console.log("diaplayMovies");
-    // console.log(movies);
+    let movies = jsonData.results
     searchList.innerHTML = "";
     for(let id = 0; id < movies.length; id++){
         let movieListItem = document.createElement('div');
         movieListItem.dataset.id = movies[id].imdbID; // setting movie id in  data-id
         movieListItem.classList.add('search-list-item');
-        movieListItem.onclick = function(e){ 
-        console.log(e)
-        loadMovieDetails(movies[id]) };
-        if(IMAGE_URL + movies.poster_path != "N/A")
-            moviePoster = IMAGE_URL +movies.poster_path;
-        else 
-            moviePoster = "image_not_found.png";
+         movieListItem.onclick = function(){loadMovieDetails(movies[id])};
+        let moviePoster = "image_not_found.png"
+        if(IMAGE_URL + movies[id].poster_path !== "N/A")
+            moviePoster = IMAGE_URL + movies[id].poster_path;
+
 
         movieListItem.innerHTML = `
-        <div class = "search-item-thumbnail")>
-        <img src = "${IMAGE_URL + movies[id].poster_path}">
+        <div class = "search-item-thumbnail">
+        <img src = "${moviePoster}" alt="">
         </div>
+        
         <div class = "search-item-info">
         <h3>${movies[id].title}</h3>
         <p>${movies[id].release_date}</p>
@@ -86,13 +84,31 @@ function displayMovieList(jsonData){
     loadMovieDetails();
 }
 
-function loadMovieDetails(movie){
+async function loadMovieDetails(movie){
     // console.log("in load movie details");
     console.log(movie);
-    if(IMAGE_URL + movie.poster_path != "N/A")
-        moviePoster = IMAGE_URL +movie.poster_path;
-    else 
-        moviePoster = "image_not_found.png";
+    if ( movie != undefined) {
+        const response = await fetch('/api/movies', {
+                    method: 'POST',
+                    body: JSON.stringify(movie),
+                    headers: {
+                        'Content-Type': 'application/json'
+                    }
+                });
+        
+                if (response.ok) {
+                    // document.location.reload();
+                    alert(response.statusText);
+                } else {
+                    alert(response.statusText);
+                }
+    }
+    
+    let moviePoster = "image_not_found.png"
+
+    if(IMAGE_URL + movie.poster_path !== "N/A")
+        moviePoster = IMAGE_URL + movie.poster_path;
+
     resultGrid.innerHTML=`
     <div class = "movie-poster">
                         <img src = "${moviePoster}" alt = "movie poster">
@@ -108,4 +124,8 @@ function loadMovieDetails(movie){
 
                     </div> 
                     `
+return "done";
+ 
 }
+
+            
