@@ -8,10 +8,12 @@ const resultGrid = document.getElementById('result-grid');
 const IMAGE_URL = `https://image.tmdb.org/t/p/w500`
 const url = `https://api.themoviedb.org/3/search/movie/`;
 const apiKey = "f4ba895ea5be84ce3be947bc2a778568"
+
+
 // let movies=[];
 
 async function clearList(){
-    await delay(100) // delays the clear for 10ms
+    await delay(500) // delays the clear for 10ms
     searchList.innerHTML="";
 }
 
@@ -36,13 +38,7 @@ async function loadMovies(searchTerm) {
         }
     })()
 
-
-   // if(data) {
-        //console.log(data)
-      //  displayMovieList(data.Search);
-      //  console.log("In If")
-      //  console.log(response.body)
-   // }
+    
   
 }
 
@@ -81,41 +77,24 @@ function displayMovieList(jsonData){
         </div>`;
         searchList.appendChild(movieListItem);
     }
-    loadMovieDetails();
+
 }
 
-async function loadMovieDetails(movie){
-    // console.log("in load movie details");
-    console.log(movie);
-    if ( movie != undefined) {
-        const response = await fetch('/api/movies', {
-                    method: 'POST',
-                    body: JSON.stringify(movie),
-                    headers: {
-                        'Content-Type': 'application/json'
-                    }
-                });
-        
-                if (response.ok) {
-                    // document.location.reload();
-                    alert(response.statusText);
-                } else {
-                    alert(response.statusText);
-                }
-    }
-    
+function loadMovieDetails(movie){
+
     let moviePoster = "image_not_found.png"
 
     if(IMAGE_URL + movie.poster_path !== "N/A")
         moviePoster = IMAGE_URL + movie.poster_path;
 
+
     resultGrid.innerHTML=`
     <div class = "movie-poster">
-                        <img src = "${moviePoster}" alt = "movie poster">
+                        <img src = "${moviePoster}" alt = "movie poster" id="movie-id">
                         
                     </div>
                     <div class = "movie-info">
-                        <h3 class = "movie-title">${movie.title}</h3>
+                        <h3 class = "movie-title" id="${movie.id}">${movie.title}</h3> 
                         <ul class = "movie-misc-info">
                             <li class = "released">${movie.release_date}</li>
                         </ul>
@@ -125,7 +104,5 @@ async function loadMovieDetails(movie){
                     </div> 
                     `
 return "done";
- 
-}
 
-            
+}
