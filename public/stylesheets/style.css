@@ -1,8 +1,16 @@
+:root{
+    --md-dark-color: #1d1d1d;
+    --dark-color:#171717;
+    --light-dark-color:#292929
+}
+
 * {
     box-sizing: border-box;
 }
 
-body,
+.body{
+    background-color:#1d1d1d;
+}
 html {
     height: 100%;
     padding: 0;
@@ -119,11 +127,11 @@ header,
 }
 
 .info-section,
-.content-section,
 .form-section,
 .sign-in-link,
 .login-link {
     padding-left: 10px;
+    color: #fff
 }
 
 .post-name,
