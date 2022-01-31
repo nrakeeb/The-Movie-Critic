@@ -244,12 +244,13 @@ main {
 
 .sign-in-link,
 .login-link {
-    color: #2c2307;
+    color: #fff;
+    
 }
 
 .form-heading h1,
 .form-heading h2 {
-    color: #b8cba2;
+    color: #fff;
 }
 
 .login-form,
