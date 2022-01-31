@@ -2,9 +2,24 @@ const { Model, DataTypes } = require('sequelize');
  
 const sequelize = require('../config/connection.js');
 
-class Movie extends Model {}
+class movie extends Model {
 
-Movie.init({
+}
+
+movie.init({
+    movie_id:
+    {   type: DataTypes.INTEGER,
+        allowNull: false,
+        primaryKey: true,
+        autoIncrement: true
+    },
+    imdb_id: {
+        type: DataTypes.INTEGER,
+        allowNull: false,
+        unique:true
+
+    },
+
     title: {
         type: DataTypes.STRING,
         allowNull: false,
@@ -12,25 +27,12 @@ Movie.init({
          len: [5]
         }
     },
-    poster_path: {
+    image_url: {
         type: DataTypes.STRING
 
     },
 
-    release_date: {
-        type:DataTypes.DATEONLY,
-        allowNull: false,
-    },
 
-    original_language: {
-        type:DataTypes.STRING,
-        allowNull:true
-    },
-
-    // overview:{
-    //     type: DataTypes.STRING,
-    //     allowNull: false,
-    // },
 },{
     sequelize,
     freezeTableName: true,
@@ -38,4 +40,4 @@ Movie.init({
     modelName: 'movie'
 })
 
-module.exports = Movie;
+module.exports = movie;
