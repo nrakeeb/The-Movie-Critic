@@ -165,6 +165,7 @@ header h1 {
 main {
     flex: 1;
     padding: 2% 4%;
+    background-color: var(--dark-color);
 }
 
 .btn-no-style {
