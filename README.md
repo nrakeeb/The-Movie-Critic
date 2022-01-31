@@ -13,6 +13,9 @@
  
   ## 🔍 Description:
   This is an interactive movie application that allows the user to critic and rate any movie. A user can see comments made by other users on the home dashboard. If the user wishes to make a post. They can join by signing up and login into their account. They can create a comment simply by searching for any movie, ranking it, and commenting on how they found the movie.  The user can also edit by either deleting or updating their comment.
+  
+  deployed website can be found here:
+  https://the-movie-critic.herokuapp.com/
 
  
   ## 💾 Installation:
