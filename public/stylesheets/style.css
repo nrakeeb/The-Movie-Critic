@@ -27,7 +27,7 @@ main,
 a,
 .btn-no-style,
 #comment-subtitle {
-    color: #b8cba2;
+    color: white;
 }
 
 a:hover,
@@ -111,10 +111,12 @@ header,
 .site-row,
 .info-section,
 .form-heading {
-    background-color: #134861;
+    background-color: #2A2A2A;
 }
 
-.login-page,
+.login-page{
+    background-color: var(--dark-color);
+}
 .sign-in-page,
 .new-form-page,
 .edit-form-page {
