@@ -21,7 +21,7 @@ router.get('/', withAuth, (req, res) => {
             ],
             include: [{
                     model: Movie,
-                    attributes: ['title', 'image_url', 'release_date', 'language', 'overview', 'created_at'],
+                    attributes: ['movie_id','imdb_id','title', 'image_url','created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
@@ -62,7 +62,7 @@ router.get('/edit/:id', withAuth, (req, res) => {
             ],
             include: [{
                     model: Movie,
-                    attributes: [ 'title', 'image_url', 'release_date', 'language', 'overview', 'created_at'],
+                    attributes: ['movie_id','imdb_id','title', 'image_url','created_at'],
                     include: {
                         model: User,
                         attributes: ['username']
