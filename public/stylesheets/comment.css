@@ -71,7 +71,7 @@
     padding: 0.5rem;
     border-bottom: 1px solid var(--dark-color);
     width: calc(350px - 8px);
-    color: black;
+    color:  #fff;
     cursor: pointer;
     -webkit-transition: background-color 200ms ease;
     -o-transition: background-color 200ms ease;
