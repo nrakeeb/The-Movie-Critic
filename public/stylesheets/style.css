@@ -193,8 +193,9 @@ main {
 
 .post {
     margin-bottom: 2%;
-    line-height: 150%;
+    line-height: 120%;
     border: 3px solid black;
+    border-radius: 10px;
 }
 
 .post .title span {
