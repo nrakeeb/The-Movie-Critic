@@ -30,6 +30,14 @@
   Go onto the website, click signup or login, and create comment. With the use of a Movie API, the user can search for any movie and leave a review. After commenting on the movie, they can add it to their dashboard. If they wish to remove or update their comment, the user are able to do this by simply clicking on “edit post”.
 
   ## Application Image
+![1 (3)](https://user-images.githubusercontent.com/82734765/151847828-47327ed6-6912-4b82-b391-28d4ebbc60dc.png)
+
+![2 (2)](https://user-images.githubusercontent.com/82734765/151847867-0a200a73-98a7-418a-96d8-d311755d298e.png)
+
+![3 (2)](https://user-images.githubusercontent.com/82734765/151847882-2561c7f7-74c5-4ed3-b40a-3676057ac3ee.png)
+
+![4 (2)](https://user-images.githubusercontent.com/82734765/151847921-0a611d9b-b44e-4cc2-b6ea-c1ed4ea81e81.png)
+
 
 
   ## License:
