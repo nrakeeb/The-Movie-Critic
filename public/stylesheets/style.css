@@ -265,3 +265,62 @@ main {
 #post-title {
     width: 100%;
 }
+
+#image-size{
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    padding: 5px;
+    width: 150px;
+    position: relative;
+    top:15px ;
+    left: 20%;
+}
+/* #text-container{
+    position: relative;
+    height: 30px;
+    width: 30px;
+    bottom: 105px;
+    left: 60%;
+} */
+#text-box{
+    
+    width: 35%;
+    color: white;
+    /* border: 3px solid #73AD21; */
+    /* border-radius: 10px;
+    border-color: black; */
+    /* padding: 10px; */
+    position: relative;
+    /* height: 30px; */
+    /* width: 30px; */
+    bottom: 150px;
+    left: 50%;
+    font-size: 30px;
+    font-family: 'Source Serif 4', sans-serif;
+    line-height: 1.8  
+} 
+
+#button{
+    background-color: #225ca3;
+    border: 0;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    transition: background-color .1s;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.your-dashboard{
+    color: #fff;
+    font-family: sans-serif;
+    text-decoration: underline;
+}
+
+#id-size{
+position: relative;
+left: 30px;
+color: white;
+font-size: 30px;
+}
+
