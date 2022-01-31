@@ -14,6 +14,7 @@ Post.init({
         primaryKey: true,
         autoIncrement: true
     },
+   
     ranking: {
         type: DataTypes.STRING,
         validate: {
@@ -32,6 +33,13 @@ Post.init({
         references: {
             model: 'user',
             key: 'id'
+        }
+    },
+    movie_id:{
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'movie',
+            key: 'movie_id'
         }
     }
 }, {
