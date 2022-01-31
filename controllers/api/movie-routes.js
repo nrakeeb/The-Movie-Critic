@@ -20,18 +20,20 @@ router.get("/", (req, res) => {
 
 //Create a Movie
 router.post('/', withAuth, (req, res) => {
-    console.log("START")
-    var body = _.pick(req.body, 'title', 'poster_path', 'release_date', 'original_language');
-    console.log("HERE", body)
-    if (req.session) {
-        Movie.create(body)
-            .then(dbMovieData => res.json(dbMovieData))
-            .catch(err => {
-                console.log(err);
-                res.status(400).json(err);
-            });
-    }
-});
+    console.log("START");
+    //if statement imdb is not in database 
 
+    Movie.findOrCreate({where: {
+        title: req.body.title,
+        imdb_id: req.body.imdb_id,
+        image_url: req.body.image_url
+    }})
+        .then(([dbMovieData, created]) => res.json(dbMovieData))
+        .catch((err) => {
+            console.log(err);
+            res.status(500).json(err);
+        });
+
+});
 
 module.exports = router;
