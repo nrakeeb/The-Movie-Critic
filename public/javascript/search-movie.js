@@ -5,8 +5,8 @@ const movieSearchBox = document.getElementById('movie-search-box');
 const searchList = document.getElementById('search-list');
 const resultGrid = document.getElementById('result-grid');
 
-const IMAGE_URL = `https://image.tmdb.org/t/p/w500`
-const url = `https://api.themoviedb.org/3/search/movie/`;
+const IMAGE_URL = `http://image.tmdb.org/t/p/w500`
+const url = `http://api.themoviedb.org/3/search/movie/`;
 const apiKey = "f4ba895ea5be84ce3be947bc2a778568"
 
 
